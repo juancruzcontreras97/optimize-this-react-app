@@ -6,6 +6,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import TodoItem from './TodoItem';
 import styles from './Todos.module.css';
 import Confetti from './Confetti';
+import { useCallback } from 'react';
 
 const Todos = () => {
   const [newTodoText, setNewTodoText] = useState('');
@@ -28,9 +29,10 @@ const Todos = () => {
     setNewTodoText('');
   };
 
-  const formatTodoText = (text, index) => {
+  const formatTodoText = useCallback((text, index) => {
     return `${text.toLowerCase()} (${index + 1} of 500)`;
-  };
+  }, []);
+
 
   return (
     <div className={styles.container}>
